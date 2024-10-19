@@ -1,0 +1,16 @@
+{
+  "name": "string-calculator",
+  "version": "1.0.0",
+  "main": "stringCalculator.mjs",
+  "type": "module",
+  "scripts": {
+    "test": "mocha stringCalculator.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "chai": "^5.1.1",
+    "mocha": "^10.7.3"
+  }
+}

@@ -18,4 +18,9 @@ describe('addition', () => {
   it('should return the sum of an unknown amount of numbers', () => {
     expect(calculator.add("1,2,3,4,5")).to.equal(15);
   });
+
+  it('should handle new lines between numbers', () => {
+    expect(calculator.add("1\n2,3")).to.equal(6);
+  });
+
 });

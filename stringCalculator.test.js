@@ -35,4 +35,11 @@ describe('addition', () => {
     expect(() => calculator.add("1,-2,-3")).to.throw("Negatives not allowed: -2, -3");
   });
 
+  it('should count the number of times Add was called', () => {
+    calculator.resetCalledCount(); 
+    calculator.add("");
+    calculator.add("1");
+    expect(calculator.getCalledCount()).to.equal(2);
+  });
+
 });

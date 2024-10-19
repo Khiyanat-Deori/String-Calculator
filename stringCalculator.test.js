@@ -6,12 +6,16 @@ describe('addition', () => {
   it('should return 0 for an empty string', () => {
     expect(calculator.add("")).to.equal(0);
   });
-  
+
   it('should return the number for single input', () => {
     expect(calculator.add("1")).to.equal(1);
   });
   
   it('should return the sum for two numbers', () => {
     expect(calculator.add("1,2")).to.equal(3);
+  });
+
+  it('should return the sum of an unknown amount of numbers', () => {
+    expect(calculator.add("1,2,3,4,5")).to.equal(15);
   });
 });

@@ -8,11 +8,22 @@ export class StringCalculator {
         if (numbers === "") return 0;
 
         let delimiter = /[\n,]/;
+
         if (numbers.startsWith('//')) {
-          const delimiterEndIndex = numbers.indexOf('\n');
-          delimiter = new RegExp(numbers.substring(2, delimiterEndIndex));
-          numbers = numbers.substring(delimiterEndIndex + 1);
+            const delimiterEndIndex = numbers.indexOf('\n');
+            const delimiterPart = numbers.substring(2, delimiterEndIndex);
+        
+            if (delimiterPart.startsWith('[') && delimiterPart.endsWith(']')) {
+                const customDelimiters = delimiterPart.split(/[\[\]]+/).filter(Boolean);
+                const escapedDelimiters = customDelimiters.map(delim => delim.replace(/[-\/\\^$.*+?()[\]{}|]/g, '\\$&'));
+                delimiter = new RegExp(escapedDelimiters.join('|')); 
+            } else {
+                delimiter = new RegExp(delimiterPart.replace(/[-\/\\^$.*+?()[\]{}|]/g, '\\$&'));
+            }
+        
+            numbers = numbers.substring(delimiterEndIndex + 1);
         }
+        
       
         const numArray = numbers.split(delimiter).map(Number).filter(num=>num<=1000);
         const negatives = numArray.filter(num => num < 0);

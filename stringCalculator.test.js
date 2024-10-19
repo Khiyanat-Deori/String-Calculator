@@ -27,4 +27,12 @@ describe('addition', () => {
     expect(calculator.add("//:\n1:2")).to.equal(3);
   });
 
+  it('should throw an error for a negative number', () => {
+    expect(() => calculator.add("1,-2,3")).to.throw("Negatives not allowed: -2");
+  });
+
+  it('should throw an error for multiple negative numbers', () => {
+    expect(() => calculator.add("1,-2,-3")).to.throw("Negatives not allowed: -2, -3");
+  });
+
 });

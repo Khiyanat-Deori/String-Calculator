@@ -14,7 +14,7 @@ export class StringCalculator {
           numbers = numbers.substring(delimiterEndIndex + 1);
         }
       
-        const numArray = numbers.split(delimiter).map(Number);
+        const numArray = numbers.split(delimiter).map(Number).filter(num=>num<=1000);
         const negatives = numArray.filter(num => num < 0);
         if (negatives.length > 0) {
             throw new Error(`Negatives not allowed: ${negatives.join(', ')}`);

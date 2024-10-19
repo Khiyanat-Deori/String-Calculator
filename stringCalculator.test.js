@@ -42,4 +42,8 @@ describe('addition', () => {
     expect(calculator.getCalledCount()).to.equal(2);
   });
 
+  it('should ignore numbers greater than 1000', () => {
+    expect(calculator.add("1001,2")).to.equal(2);
+  });
+
 });

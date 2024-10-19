@@ -1,5 +1,10 @@
 export class StringCalculator {
+    constructor() {
+        this.callCount = 0; 
+    } 
+
     add(numbers) {
+        this.callCount++;
         if (numbers === "") return 0;
 
         let delimiter = /[\n,]/;
@@ -15,5 +20,13 @@ export class StringCalculator {
             throw new Error(`Negatives not allowed: ${negatives.join(', ')}`);
         }
         return numArray.reduce((sum, num) => sum + num, 0);            
+    }
+
+    getCalledCount() {
+        return this.callCount;
+    }
+
+    resetCalledCount() {
+        this.callCount = 0;
     }
 }

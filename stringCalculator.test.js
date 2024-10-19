@@ -25,6 +25,7 @@ describe('addition', () => {
 
   it('should support different delimiters', () => {
     expect(calculator.add("//:\n1:2")).to.equal(3);
+    expect(calculator.add("//[***]\n1***2***3")).to.equal(6);
   });
 
   it('should throw an error for a negative number', () => {
@@ -44,6 +45,11 @@ describe('addition', () => {
 
   it('should ignore numbers greater than 1000', () => {
     expect(calculator.add("1001,2")).to.equal(2);
+  });
+
+  it('should allow multiple delimiters', () => {
+    expect(calculator.add("//[*][%]\n1*2%3")).to.equal(6);
+    expect(calculator.add("//[**][%%]\n1**2%%3")).to.equal(6);
   });
 
 });
